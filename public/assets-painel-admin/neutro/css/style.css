@@ -1,0 +1,25 @@
+.mr-2{
+    margin-right: 10px;
+}
+
+.mb-2{
+    margin-bottom: 10px;
+}
+
+.mb-5{
+    margin-bottom: 20px;
+}
+
+.column span{
+font-weight: bold;
+}
+
+
+.bold{
+    font-weight: bold !important;
+}
+
+.img-fluid-logo{
+    width: 100%;
+    height: auto;
+}
