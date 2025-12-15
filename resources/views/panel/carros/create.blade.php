@@ -29,8 +29,15 @@
 
                             <div class="col-md-2 mb-2">
                                 <label for="marca">Marca <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="marca" placeholder="Marca"
-                                    value="{{ old('marca', null) }}" />
+                                <select name="marca" class="form-control">
+                                    <option value="" hidden>Marca</option>
+                                    @foreach (config('constants.CATEGORIAS_DE_CARROS') as $key => $item)
+                                        <option value="{{ $item }}"
+                                            {{ old('marca', null) == $item ? 'selected' : null }}>
+                                            {{ $item }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                 @if ($errors->has('marca'))
                                     <span class="text-danger">{{ $errors->first('marca') }}</span>
                                 @endif

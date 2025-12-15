@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarroController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\UtilizadorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -38,6 +39,10 @@ Route::prefix('panel')->group(function () {
     Route::resource('utilizadores', UtilizadorController::class);
     Route::resource('carros', CarroController::class);
     Route::resource('clientes', ClienteController::class);
+
+    Route::prefix('pedidos')->group(function(){
+        Route::get('/', [PedidoController::class, 'index']);
+    });
 });
 
 Route::get('/storage/{path}/{name}', function ($path, $name) {

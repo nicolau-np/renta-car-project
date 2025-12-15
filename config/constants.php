@@ -51,4 +51,13 @@ return [
         'automatica'=>'Automática',
         'manual'=>'Manual',
     ],
+
+    'CATEGORIAS_DE_CARROS'=>[
+        'totyota'=>'TOTYOTA',
+        'hyundai'=>'HYUNDAI',
+        'mitshubishi'=>'MITSHUBISHI',
+        'mazda'=>'MAZDA',
+        'mercedes'=>'MERCEDES',
+        'audi'=>'AUDI',
+    ],
 ];

@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('carros', function (Blueprint $table) {
             $table->id();
-            $table->string('marca');
+            $table->string('marca', Config::get('constants.CATEGORIAS_DE_CARROS'));
             $table->string('modelo');
             $table->string('cor');
             $table->string('matricula');

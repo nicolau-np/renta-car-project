@@ -15,8 +15,7 @@
                         </div>
                         <div class="col-md-2 mb-2">
                             <button type="submit" class="btn btn-success mr-2">Pesquisar</button>
-                            <a href="{{ '/panel/clientes/create' }}" class="btn btn-primary">Novo</a>
-
+                           
                         </div>
                     </div>
 
