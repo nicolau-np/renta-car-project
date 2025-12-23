@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-
     <section class="header__form">
         <form action="/">
             <div class="input__group">
@@ -22,14 +20,13 @@
 
     <div class="video-container">
         <video id="videoComercial" preload="metadata">
-            <source src="video/Vídeo comercial concessionária - CarHouse Toyota, Lexus e Hyundai.mp4"
-                type="video/mp4">
+            <source src="video/Vídeo comercial concessionária - CarHouse Toyota, Lexus e Hyundai.mp4" type="video/mp4">
             O seu navegador não suporta o elemento de vídeo.
         </video>
         <div class="legenda">UPCOMING CARS</div>
     </div>
 
-    <section class="section__container about__container" id="about">
+    <section class="section__container about__container pb-50px" id="about">
         <h2 class="section__header">Como Funciona?</h2>
         <p class="section__description">
             Alugar um carro conosco é simples! Escolha seu veículo, defina as datas e conclua sua reserva. Nós cuidamos
@@ -63,7 +60,7 @@
         </div>
     </section>
 
-    <section class="deals" id="deals">
+    <section class="deals mb-2 pt-50px pb-50px" id="deals">
         <div class="section__container deals__container">
             <h2 class="section__header">Ofertas de aluguer de carros mais populares</h2>
             <p class="section__description">
@@ -73,538 +70,56 @@
                 tarifa incrível!
             </p>
             <div class="deals__tabs">
-                <button class="btn active" data-id="Tesla">Hyundai</button>
-                <button class="btn" data-id="Mitsubishi">Mitsubishi</button>
-                <button class="btn" data-id="Mazda">Mazda</button>
-                <button class="btn" data-id="Toyota">Toyota</button>
-                <button class="btn" data-id="Honda">Honda</button>
+                @foreach (config('constants.CATEGORIAS_DE_CARROS') as $item)
+                    <button class="btn" data-id="Tesla">{{ $item }}</button>
+                @endforeach
             </div>
+
+
             <div id="Tesla" class="tab__content active">
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/hyundai-i30.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(550)</span>
-                    </div>
-                    <h4>Hyundai I30</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
+                @foreach ($carros as $carro)
+                    <div class="deals__card">
+                        <img src="{{ url('storage/carros/' . $carro->img) }}" alt="deals" />
+                        <div class="deals__rating">
+                            <span><i class="ri-star-fill"></i></span>
+                            <span><i class="ri-star-fill"></i></span>
+                            <span><i class="ri-star-fill"></i></span>
+                            <span><i class="ri-star-fill"></i></span>
+                            <span><i class="ri-star-line"></i></span>
+                            <span>(550)</span>
                         </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Automático
+                        <h4>{{ $carro->marca . ' ' . $carro->modelo }}</h4>
+                        <div class="deals__card__grid">
+                            <div>
+                                <span><i class="ri-group-line"></i></span> {{ $carro->lugares . ' Lugares' }}
+                            </div>
+                            <div>
+                                <span><i class="ri-steering-2-line"></i></span> {{ $carro->caixa_automovel }}
+                            </div>
+                            <div>
+                                <span><i class="ri-speed-up-line"></i></span> {{ $carro->quilometros . ' km' }}
+                            </div>
+                            {{--<div>
+                                <span><i class="ri-car-line"></i></span> {{ $carro->tipo }}
+                            </div>--}}
                         </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 400km
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/Hyundai-Elantra.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(450)</span>
-                    </div>
-                    <h4>Hyundai Elantra</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 5 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Automático
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
+                        <hr />
+                        <div class="deals__card__footer">
+                            <h3>{{ number_format($carro->preco_por_dia, 2, ',', '.') }} Kzs<span>/Por Dia</span></h3>
+                            <a href="#">
+                                Alugue agora
+                                <span><i class="ri-arrow-right-line"></i></span>
+                            </a>
                         </div>
                     </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/Hyundai-Veloster.jpg')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(550)</span>
-                    </div>
-                    <h4>Hyundai Veloster</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Automático
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div id="Mitsubishi" class="tab__content">
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-4.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(350)</span>
-                    </div>
-                    <h4>Mirage</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Automático
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-5.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(250)</span>
-                    </div>
-                    <h4>Xpander</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>45.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-6.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(150)</span>
-                    </div>
-                    <h4>Pajero Sports</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>45.000 Kzs <span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div id="Mazda" class="tab__content">
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-7.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(200)</span>
-                    </div>
-                    <h4>Mazda CX5</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>$130<span>/Per Day</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-8.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(100)</span>
-                    </div>
-                    <h4>Mazda CX-30</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Automático
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>40.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-9.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(180)</span>
-                    </div>
-                    <h4>Mazda CX-9</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div id="Toyota" class="tab__content">
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/hilux.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(250)</span>
-                    </div>
-                    <h4>Hilux</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/Furtuner.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(550)</span>
-                    </div>
-                    <h4>Furtuner</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/rav444.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(180)</span>
-                    </div>
-                    <h4>Rav4</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div id="Honda" class="tab__content">
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-13.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(200)</span>
-                    </div>
-                    <h4>Amaze</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-14.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(350)</span>
-                    </div>
-                    <h4>Elevate</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasolina
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals__card">
-                    <img src="{{asset('assets/img/deals-15.png')}}" alt="deals" />
-                    <div class="deals__rating">
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-fill"></i></span>
-                        <span><i class="ri-star-line"></i></span>
-                        <span>(300)</span>
-                    </div>
-                    <h4>City</h4>
-                    <div class="deals__card__grid">
-                        <div>
-                            <span><i class="ri-group-line"></i></span> 4 Lugares
-                        </div>
-                        <div>
-                            <span><i class="ri-steering-2-line"></i></span> Manual
-                        </div>
-                        <div>
-                            <span><i class="ri-speed-up-line"></i></span> 18km/l
-                        </div>
-                        <div>
-                            <span><i class="ri-car-line"></i></span> Gasóleo
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="deals__card__footer">
-                        <h3>35.000 Kzs<span>/Por Dia</span></h3>
-                        <a href="#">
-                            Alugue agora
-                            <span><i class="ri-arrow-right-line"></i></span>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
     <section class="choose__container" id="choose">
         <div class="choose__image">
-            <img src="{{asset('assets/img/Hyundai.png')}}" alt="choose" />
+            <img src="{{ asset('assets/img/Hyundai.png') }}" alt="choose" />
         </div>
         <div class="choose__content">
             <h2 class="section__header">Por que nos escolher</h2>
@@ -666,7 +181,7 @@
 
     <section class="subscribe__container">
         <div class="subscribe__image">
-            <img src="{{asset('assets/img/JETOUR-X70.png')}}" alt="subscribe" />
+            <img src="{{ asset('assets/img/JETOUR-X70.png') }}" alt="subscribe" />
         </div>
         <div class="subscribe__content">
             <h2 class="section__header">
@@ -698,7 +213,7 @@
                 <div class="swiper-slide">
                     <div class="client__card">
                         <div class="client__details">
-                            <img src="{{asset('assets/img/mulher.png')}}" alt="client" />
+                            <img src="{{ asset('assets/img/mulher.png') }}" alt="client" />
                             <div>
                                 <h4>Maria Januário</h4>
                                 <div class="client__rating">
@@ -720,7 +235,7 @@
                 <div class="swiper-slide">
                     <div class="client__card">
                         <div class="client__details">
-                            <img src="{{asset('assets/img/Joao.jpg')}}" alt="client" />
+                            <img src="{{ asset('assets/img/Joao.jpg') }}" alt="client" />
                             <div>
                                 <h4>Miguel Ricardo</h4>
                                 <div class="client__rating">
@@ -742,7 +257,7 @@
                 <div class="swiper-slide">
                     <div class="client__card">
                         <div class="client__details">
-                            <img src="{{asset('assets/img/homem.png')}}" alt="client" />
+                            <img src="{{ asset('assets/img/homem.png') }}" alt="client" />
                             <div>
                                 <h4>Pedro António</h4>
                                 <div class="client__rating">
@@ -764,7 +279,7 @@
                 <div class="swiper-slide">
                     <div class="client__card">
                         <div class="client__details">
-                            <img src="{{asset('assets/img/Joao.jpg')}}" alt="client" />
+                            <img src="{{ asset('assets/img/Joao.jpg') }}" alt="client" />
                             <div>
                                 <h4>João Pedro</h4>
                                 <div class="client__rating">
@@ -786,7 +301,7 @@
                 <div class="swiper-slide">
                     <div class="client__card">
                         <div class="client__details">
-                            <img src="{{asset('assets/img/client-5.jpg')}}" alt="client" />
+                            <img src="{{ asset('assets/img/client-5.jpg') }}" alt="client" />
                             <div>
                                 <h4>Wilson Tudilu</h4>
                                 <div class="client__rating">
@@ -808,5 +323,4 @@
             </div>
         </div>
     </section>
-
 @endsection

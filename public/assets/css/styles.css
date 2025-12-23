@@ -932,3 +932,13 @@ nav {
     padding: 1.5rem;
   }
 }
+
+/**MEU ESTILO*/
+
+.pt-50px{
+    padding-top: 50px;
+}
+
+.pb-50px{
+    padding-bottom: 50px;
+}

@@ -28,7 +28,7 @@
             <ul class="nav__links" id="nav-links">
                 <li><a href="#home">Página Inicial</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="#deals">Oferta de aluguel</a></li>
+                <li><a href="#deals">Ofertas</a></li>
                 <li><a href="#choose">Por que nos escolher</a></li>
                 <li><a href="#client">Depoimentos</a></li>
                 <li><a href="#">Registrar</a></li>
@@ -54,7 +54,7 @@
 
     @yield('content')
 
-    <footer class="footer">
+    <footer class="footer pt-50px">
         <div class="section__container footer__container">
             <div class="footer__col">
                 <div class="footer__logo">
@@ -91,9 +91,9 @@
                 <ul class="footer__links">
                     <li><a href="#home">Página Inicial</a></li>
                     <li><a href="#about">Sobre</a></li>
-                    <li><a href="#deals">Oferta de aluguel</a></li>
+                    <li><a href="#deals">Ofertas</a></li>
                     <li><a href="#choose">Por que nos escolher</a></li>
-                    <li><a href="#client">Depoimentos</a></li>
+                    <li><a href="/auth/login">Iniciar Sessão</a></li>
                 </ul>
             </div>
             <div class="footer__col">
