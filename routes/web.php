@@ -31,6 +31,9 @@ Route::prefix('auth')->group(function () {
     });
 });
 
+Route::get('solicitar-carro', [HomeController::class, 'solicitarCarro']);
+Route::post('solicitar-carro', [HomeController::class, 'solicitarCarroStore']);
+
 Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('panel')->group(function () {

@@ -35,9 +35,14 @@ return [
 
     'USERS' => [
         [
-            'name' => 'RENTA CAR',
-            'email' => 'rentacar@gmail.com',
+            'name' => 'Ana Carolina',
+            'email' => 'anacarolina@gmail.com',
             'nivel_de_acesso' => 'admin',
+            'password' => 'renta2025#1',
+        ],[
+            'name' => 'Antonio Paulo',
+            'email' => 'antoniopaulo@gmail.com',
+            'nivel_de_acesso' => 'user',
             'password' => 'renta2025#1',
         ],
     ],

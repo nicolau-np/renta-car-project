@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-md-2 mb-2">
                             <button type="submit" class="btn btn-success mr-2">Pesquisar</button>
-                           
+
                         </div>
                     </div>
 
@@ -23,42 +23,40 @@
                 <div class="box-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
-                            {{--<thead>
+                            <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th>Nome</th>
-                                    <th>Nacionalidade</th>
                                     <th>Telefone</th>
-                                    <th>Nº B.I</th>
                                     <th>Nº de Carta</th>
+                                    <th>Automóvel</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clientes as $key => $cliente)
+                                @foreach ($pedidos as $key => $pedido)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $cliente->nome }}</td>
-                                        <td>{{ $cliente->nacionalidade }}</td>
-                                        <td>{{ $cliente->telefone }}</td>
-                                        <td>{{ $cliente->bi }}</td>
-                                        <td>{{ $cliente->carta_de_conducao}}</td>
+                                        <td>{{ $pedido->nome }}</td>
+                                        <td>{{ $pedido->telefone }}</td>
+                                        <td>{{ $pedido->numero_carta}}</td>
+                                        <td>{{$pedido->automovel->marca.' | '.$pedido->automovel->modelo.' | '.$pedido->automovel->cor}}</td>
                                         <td>
-                                            <a href="{{ "/panel/clientes/$item->id/edit" }}"
+                                            <a href="{{ "/panel/pedidos/$pedido->id/edit" }}"
                                                 class="btn btn-primary btn-sm">Editar</a>
                                             &nbsp;
-                                            <a href="{{ "/panel/clientes/$item->id" }}"
+                                            <a href="{{ "/panel/pedidos/$pedido->id" }}"
                                                 class="btn btn-warning btn-sm">Detalhes</a>
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>--}}
+                            </tbody>
                         </table>
                     </div>
 
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    {{--<x-paginate :objects="$clientes" />--}}
+                    <x-paginate :objects="$pedidos" />
                 </div>
             </div><!-- /.box -->
         </div>

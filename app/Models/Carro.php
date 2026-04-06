@@ -26,4 +26,9 @@ class Carro extends Model
     {
         return $this->hasMany(CarroAlugado::class, 'carro_id');
     }
+
+    public function pedido()
+    {
+        return $this->hasMany(Pedido::class, 'automovel_id');
+    }
 }

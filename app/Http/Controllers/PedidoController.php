@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\MenuItemsHelper;
 use App\Helpers\UploadHelper;
 use App\Models\Cliente;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
@@ -13,6 +14,7 @@ class PedidoController extends Controller
     public function __construct(
         private MenuItemsHelper $menuItemsHelper,
         private UploadHelper $uploadHelper,
+        private Pedido $pedido
     ) {}
 
     /**
@@ -21,13 +23,15 @@ class PedidoController extends Controller
     public function index()
     {
         $items_do_menu = $this->menuItemsHelper->getItems();
+        $pedidos = $this->pedido->orderBy('created_at', 'desc')->paginate(12);
+
 
         $title = Config::get('app.name');
         $menu = "Pedido";
         $submenu = "";
         $type = "pedidos";
 
-        return view('panel.pedidos.index', compact('title', 'menu', 'submenu', 'type', 'items_do_menu'));
+        return view('panel.pedidos.index', compact('title', 'menu', 'submenu', 'type', 'items_do_menu', 'pedidos'));
     }
 
     /**

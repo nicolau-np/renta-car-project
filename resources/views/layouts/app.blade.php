@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
     <title>Rent a car </title>
+    @if ($type == 'solicitar-carro')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    @endif
 </head>
 
 <body>
@@ -16,8 +20,10 @@
             <div class="nav__header">
                 <div class="nav__logo">
                     <a href="#" class="logo">
-                        <img src="{{asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png')}}" alt="logo" class="logo-white" />
-                        <img src="{{asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png')}}" alt="logo" class="logo-dark" />
+                        <img src="{{ asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png') }}" alt="logo"
+                            class="logo-white" />
+                        <img src="{{ asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png') }}" alt="logo"
+                            class="logo-dark" />
                         <span>Uyo Rent a Car</span>
                     </a>
                 </div>
@@ -26,30 +32,33 @@
                 </div>
             </div>
             <ul class="nav__links" id="nav-links">
-                <li><a href="#home">Página Inicial</a></li>
+                <li><a href="/#home">Página Inicial</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="#deals">Ofertas</a></li>
                 <li><a href="#choose">Por que nos escolher</a></li>
                 <li><a href="#client">Depoimentos</a></li>
-                <li><a href="#">Registrar</a></li>
+                <li><a href="/solicitar-carro">Solicitar Carro</a></li>
             </ul>
             <div class="nav__btns">
-                <button class="btn">Registrar</button>
+                <a class="btn" href="/solicitar-carro">Solicitar Carro</a>
             </div>
         </nav>
-        <div class="header__container" id="home">
-            <div class="header__image">
-                <img src="{{asset('assets/img/ChatGPT Image.png')}}" alt="header" />
+        @if ($type != 'solicitar-carro')
+            <div class="header__container" id="home">
+                <div class="header__image">
+                    <img src="{{ asset('assets/img/ChatGPT Image.png') }}" alt="header" />
+                </div>
+                <div class="header__content">
+                    <h1>MANEIRA FÁCIL E RÁPIDA DE ALUGAR UMA VIATURA</h1>
+                    <p class="section__description">
+                        Descubra uma experiência perfeita de aluguel de carros conosco. Escolhe entre uma variedade de
+                        veículos para atender ao seuestilo e necessidades e pegue a estrada com confiança. Rápido, fácil
+                        e
+                        confiável - alugue seu carro hoje mesmo.
+                    </p>
+                </div>
             </div>
-            <div class="header__content">
-                <h1>MANEIRA FÁCIL E RÁPIDA DE ALUGAR UMA VIATURA</h1>
-                <p class="section__description">
-                    Descubra uma experiência perfeita de aluguel de carros conosco. Escolhe entre uma variedade de
-                    veículos para atender ao seuestilo e necessidades e pegue a estrada com confiança. Rápido, fácil e
-                    confiável - alugue seu carro hoje mesmo.
-                </p>
-            </div>
-        </div>
+        @endif
     </header>
 
     @yield('content')
@@ -59,7 +68,7 @@
             <div class="footer__col">
                 <div class="footer__logo">
                     <a href="#" class="logo">
-                        <img src="{{asset('assets/img/end logo.png')}}" alt="logo" />
+                        <img src="{{ asset('assets/img/end logo.png') }}" alt="logo" />
                         <span>Uyo Rent a Car</span>
                     </a>
                 </div>
@@ -135,7 +144,9 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script>
         const video = document.getElementById('videoComercial');
 
