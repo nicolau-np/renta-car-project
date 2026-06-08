@@ -35,6 +35,14 @@ Route::get('solicitar-carro', [HomeController::class, 'solicitarCarro']);
 Route::post('solicitar-carro', [HomeController::class, 'solicitarCarroStore']);
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('tarifas-e-reservas', [HomeController::class, 'tarifasEReservas']);
+Route::get('frota', [HomeController::class, 'frota']);
+Route::get('servico-de-reboque', [HomeController::class, 'servicoDeReboque']);
+Route::get('modificar-reserva', [HomeController::class, 'modificarReserva']);
+Route::get('sobre', [HomeController::class, 'sobre']);
+Route::get('termos-e-condicoes', [HomeController::class, 'termosECondicoes']);
+Route::get('por-que-nos-escolher', [HomeController::class, 'porQueNosEscolher']);
+Route::get('fazer-reserva', [HomeController::class, 'fazerReserva']);
 
 Route::prefix('panel')->group(function () {
     Route::get('/', [HomeController::class, 'panel']);
@@ -43,7 +51,7 @@ Route::prefix('panel')->group(function () {
     Route::resource('carros', CarroController::class);
     Route::resource('clientes', ClienteController::class);
 
-    Route::prefix('pedidos')->group(function(){
+    Route::prefix('pedidos')->group(function () {
         Route::get('/', [PedidoController::class, 'index']);
     });
 });

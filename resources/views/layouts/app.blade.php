@@ -32,15 +32,15 @@
                 </div>
             </div>
             <ul class="nav__links" id="nav-links">
-                <li><a href="/#home">Página Inicial</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="#deals">Ofertas</a></li>
-                <li><a href="#choose">Por que nos escolher</a></li>
-                <li><a href="#client">Depoimentos</a></li>
-                <li><a href="/solicitar-carro">Solicitar Carro</a></li>
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/tarifas-e-reservas">Tarifas e reservas</a></li>
+                <li><a href="/frota">Frota</a></li>
+                <li><a href="/servico-de-reboque">Serviço de reboque</a></li>
+                <li><a href="/modificar-reserva">Modificar reserva</a></li>
+                <li><a href="/sobre">Sobre</a></li>
             </ul>
             <div class="nav__btns">
-                <a class="btn" href="/solicitar-carro">Solicitar Carro</a>
+                <a class="btn" href="/fazer-reserva">Fazer Reserva</a>
             </div>
         </nav>
         @if ($type != 'solicitar-carro')
@@ -98,10 +98,10 @@
             <div class="footer__col">
                 <h4>Nossos Serviços</h4>
                 <ul class="footer__links">
-                    <li><a href="#home">Página Inicial</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#deals">Ofertas</a></li>
-                    <li><a href="#choose">Por que nos escolher</a></li>
+                    <li><a href="/">Página Inicial</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/termos-e-condicoes">Termos e condições</a></li>
+                    <li><a href="/por-que-nos-escolher">Por que nos escolher</a></li>
                     <li><a href="/auth/login">Iniciar Sessão</a></li>
                 </ul>
             </div>

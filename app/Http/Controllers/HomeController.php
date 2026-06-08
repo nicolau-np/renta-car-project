@@ -18,6 +18,7 @@ class HomeController extends Controller
         private Pedido $pedido,
         private UploadHelper $upload_helper
     ) {}
+
     public function index()
     {
         $carros = $this->carro->all();
@@ -27,6 +28,86 @@ class HomeController extends Controller
         $type = "home";
 
         return view('index', compact('title', 'menu', 'submenu', 'type', 'carros'));
+    }
+
+    public function tarifasEReservas()
+    {
+        $title = Config::get('app.name');
+        $menu = "Tarifas e Reservas";
+        $submenu = "";
+        $type = "tarifas-e-reservas";
+
+        return view('tarifas-e-reservas', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function frota()
+    {
+        $title = Config::get('app.name');
+        $menu = "Frota";
+        $submenu = "";
+        $type = "frota";
+
+        return view('frota', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function servicoDeReboque()
+    {
+        $title = Config::get('app.name');
+        $menu = "Serviço de Reboque";
+        $submenu = "";
+        $type = "servico-de-reboque";
+
+        return view('servico-de-reboque', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function modificarReserva()
+    {
+        $title = Config::get('app.name');
+        $menu = "Modificar Reserva";
+        $submenu = "";
+        $type = "modificar-reserva";
+
+        return view('modificar-reserva', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function sobre()
+    {
+        $title = Config::get('app.name');
+        $menu = "Sobre";
+        $submenu = "";
+        $type = "sobre";
+
+        return view('sobre', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function termosECondicoes()
+    {
+        $title = Config::get('app.name');
+        $menu = "Termos e Condições";
+        $submenu = "";
+        $type = "termos-e-condicoes";
+
+        return view('termos-e-condicoes', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function porQueNosEscolher()
+    {
+        $title = Config::get('app.name');
+        $menu = "Por que nos escolher";
+        $submenu = "";
+        $type = "por-que-nos-escolher";
+
+        return view('por-que-nos-escolher', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function fazerReserva()
+    {
+        $title = Config::get('app.name');
+        $menu = "Fazer Reserva";
+        $submenu = "";
+        $type = "fazer-reserva";
+
+        return view('fazer-reserva', compact('title', 'menu', 'submenu', 'type'));
     }
 
     public function panel()
