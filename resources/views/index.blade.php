@@ -20,7 +20,7 @@
 
     <div class="video-container">
         <video id="videoComercial" preload="metadata">
-            <source src="video/Vídeo comercial concessionária - CarHouse Toyota, Lexus e Hyundai.mp4" type="video/mp4">
+            <source src="{{ asset('assets/video/Vídeo comercial concessionária - CarHouse Toyota, Lexus e Hyundai.mp4') }}" type="video/mp4">
             O seu navegador não suporta o elemento de vídeo.
         </video>
         <div class="legenda">UPCOMING CARS</div>
