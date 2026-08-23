@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" />
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap-components.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/caroucel.css')}}">
     <title>Rent a car </title>
 
 </head>
@@ -42,7 +43,7 @@
             </div>
         </nav>
         @if ($type == 'home')
-            <div class="header__container" id="home">
+        <!--<div class="header__container" id="home">
                 <div class="header__image">
                     <img src="{{ asset('assets/img/ChatGPT Image.png') }}" alt="header" />
                 </div>
@@ -55,7 +56,77 @@
                         confiável - alugue seu carro hoje mesmo.
                     </p>
                 </div>
+            </div>-->
+
+        <div class="header__carousel" id="home">
+
+            <div class="header__carousel__track">
+
+                {{-- SLIDE 1 --}}
+                <div class="header__slide is-active"
+                    style="background-image: url('https://images.unsplash.com/photo-1601929862217-f1bf94503333?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="header__slide__overlay"></div>
+                    <div class="header__content">
+                        <h1 class="header__slide__title">MANEIRA FÁCIL E RÁPIDA DE ALUGAR UMA VIATURA</h1>
+                        <p class="header__slide__desc">
+                            Descubra uma experiência perfeita de aluguel de carros connosco. Escolha entre uma
+                            variedade de veículos para atender ao seu estilo e necessidades e pegue a estrada
+                            com confiança. Rápido, fácil e confiável — alugue o seu carro hoje mesmo.
+                        </p>
+                        <a href="{{ url('/frota') }}#reserva" class="btn">
+                            <i class="ri-calendar-check-line"></i> Reservar Agora
+                        </a>
+                    </div>
+                </div>
+
+                {{-- SLIDE 2 --}}
+                <div class="header__slide"
+                    style="background-image: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="header__slide__overlay"></div>
+                    <div class="header__content">
+                        <h1 class="header__slide__title">UMA FROTA PARA CADA TIPO DE VIAGEM</h1>
+                        <p class="header__slide__desc">
+                            De veículos económicos a SUVs e carros de luxo, temos a opção certa para o seu
+                            dia-a-dia, negócios ou férias. Todos os veículos são inspeccionados e mantidos
+                            ao mais alto padrão.
+                        </p>
+                        <a href="{{ url('/frota') }}" class="btn">
+                            <i class="ri-car-line"></i> Ver Frota
+                        </a>
+                    </div>
+                </div>
+
+                {{-- SLIDE 3 --}}
+                <div class="header__slide"
+                    style="background-image: url('https://images.unsplash.com/photo-1522255272218-7ac5249be344?q=80&w=1600&auto=format&fit=crop');">
+                    <div class="header__slide__overlay"></div>
+                    <div class="header__content">
+                        <h1 class="header__slide__title">ASSISTÊNCIA 24 HORAS, ONDE QUER QUE ESTEJA</h1>
+                        <p class="header__slide__desc">
+                            A sua tranquilidade é a nossa prioridade. Contamos com uma equipa disponível
+                            a qualquer hora para o apoiar em caso de imprevisto durante a sua viagem.
+                        </p>
+                        <a href="tel:+244923000000" class="btn btn--outline">
+                            <i class="ri-phone-line"></i> Ligar Agora
+                        </a>
+                    </div>
+                </div>
+
             </div>
+
+            {{-- Setas de navegação --}}
+            <button type="button" class="header__carousel__arrow header__carousel__arrow--prev" aria-label="Slide anterior">
+                <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <button type="button" class="header__carousel__arrow header__carousel__arrow--next" aria-label="Slide seguinte">
+                <i class="ri-arrow-right-s-line"></i>
+            </button>
+
+            {{-- Bolinhas de navegação (geradas conforme o nº de slides) --}}
+            <div class="header__carousel__dots"></div>
+
+        </div>
+
         @endif
     </header>
 
@@ -142,6 +213,7 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{asset('assets/js/caroucel.js')}}"></script>
 
     </script>
     <script>

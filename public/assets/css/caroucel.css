@@ -1,0 +1,150 @@
+    .header__carousel {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 90vh;
+        min-height: 480px;
+    }
+
+    .header__carousel__track {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s ease;
+    }
+
+    /* Cada slide ocupa toda a área do carousel; a imagem é o próprio fundo do slide */
+    .header__carousel__track .header__slide {
+        position: relative;
+        min-width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Overlay escuro sobre a imagem, para o texto ficar legível */
+    .header__slide__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(90deg,
+                rgba(0, 0, 0, 0.65) 0%,
+                rgba(0, 0, 0, 0.45) 45%,
+                rgba(0, 0, 0, 0.15) 75%,
+                rgba(0, 0, 0, 0) 100%);
+    }
+
+    /* Texto sobreposto, alinhado à esquerda */
+    .header__carousel .header__content {
+        position: relative;
+        z-index: 2;
+        max-width: 560px;
+        padding: 0 5% 0 6%;
+        text-align: left;
+    }
+
+    .header__carousel .header__content .header__slide__title {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        font-size: 2.4rem;
+        line-height: 1.15;
+        margin-bottom: 100px;
+    }
+
+    .header__carousel .header__content .header__slide__desc {
+        color: rgba(255, 255, 255, 0.92) !important;
+        margin-bottom:20px;
+    }
+
+    @media (max-width: 768px) {
+        .header__carousel {
+            height: 70vh;
+            min-height: 420px;
+        }
+
+        .header__carousel .header__content {
+            max-width: 90%;
+            padding: 0 6%;
+        }
+
+        .header__carousel .header__content .header__slide__title {
+            font-size: 1.6rem;
+        }
+    }
+
+    .header__carousel__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--primary-color, #185FA5);
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        transition: background 0.2s ease;
+    }
+
+    .header__carousel__arrow:hover {
+        background: #ffffff;
+    }
+
+    .header__carousel__arrow--prev {
+        left: 16px;
+    }
+
+    .header__carousel__arrow--next {
+        right: 16px;
+    }
+
+    .header__carousel__dots {
+        position: absolute;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 5;
+    }
+
+    .header__carousel__dots button {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.55);
+        cursor: pointer;
+        padding: 0;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .header__carousel__dots button.is-active {
+        background: var(--primary-color, #185FA5);
+        transform: scale(1.15);
+    }
+
+    @media (max-width: 768px) {
+        .header__carousel__arrow {
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+        }
+    }
