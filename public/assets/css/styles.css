@@ -784,9 +784,9 @@ nav {
     color: var(--text-dark);
   }
 
-  .nav__links li:last-child {
+  /*.nav__links li:last-child {
     display: none;
-  }
+  }*/
 
   .nav__btns {
     flex: 1;

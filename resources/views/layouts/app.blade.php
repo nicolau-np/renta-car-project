@@ -18,11 +18,11 @@
             <div class="nav__header">
                 <div class="nav__logo">
                     <a href="#" class="logo">
-                        <img src="{{ asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png') }}" alt="logo"
+                        <!--<img src="{{ asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png') }}" alt="logo"
                             class="logo-white" />
                         <img src="{{ asset('assets/img/ChatGPT Image 23_05_2025, 23_26_12.png') }}" alt="logo"
-                            class="logo-dark" />
-                        <span>Uyo Rent a Car</span>
+                            class="logo-dark" />-->
+                        <span>Nelsal e Filhos, lda</span>
                     </a>
                 </div>
                 <div class="nav__menu__btn" id="menu-btn">
@@ -66,8 +66,8 @@
             <div class="footer__col">
                 <div class="footer__logo">
                     <a href="#" class="logo">
-                        <img src="{{ asset('assets/img/end logo.png') }}" alt="logo" />
-                        <span>Uyo Rent a Car</span>
+                        <!--<img src="{{ asset('assets/img/end logo.png') }}" alt="logo" />-->
+                        <span>Nelsal e Filhos, lda</span>
                     </a>
                 </div>
                 <p>
@@ -103,7 +103,7 @@
                     <li><a href="/auth/login">Iniciar Sessão</a></li>
                 </ul>
             </div>
-            <div class="footer__col">
+            <!--<div class="footer__col">
                 <h4>Modelos De Veículos</h4>
                 <ul class="footer__links">
                     <li><a href="#">Toyota Corolla</a></li>
@@ -112,7 +112,7 @@
                     <li><a href="#">Hyunday Santa Fé</a></li>
                     <li><a href="#">Mistubishi Pajero</a></li>
                 </ul>
-            </div>
+            </div>-->
             <div class="footer__col">
                 <h4>Contactos</h4>
                 <ul class="footer__links">
@@ -128,14 +128,14 @@
                     </li>
                     <li>
                         <a href="#">
-                            <span><i class="ri-mail-fill"></i></span> uyocars10@gmail.com
+                            <span><i class="ri-mail-fill"></i></span> nelsalefilhos@gmail.com
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="footer__bar">
-            Copyright © 2025 Uyo. All rights reserved.
+            Copyright © 2025 Nelsal e Filhos, lda. Todos os direitos reservados.
         </div>
     </footer>
 
