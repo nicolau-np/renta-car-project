@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('tem_carta');
-            $table->string('telefone');
+            $table->string('tem_carta')->nullable();
+            $table->string('telefone')->nullable();
             $table->string('numero_carta')->nullable();
             $table->text('bilhete')->nullable();
             $table->string('solicitar_motorista');

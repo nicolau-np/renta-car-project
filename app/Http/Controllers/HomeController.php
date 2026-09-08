@@ -102,12 +102,18 @@ class HomeController extends Controller
 
     public function fazerReserva()
     {
+        $veiculos = Carro::all();
         $title = Config::get('app.name');
         $menu = "Fazer Reserva";
         $submenu = "";
         $type = "fazer-reserva";
 
-        return view('fazer-reserva', compact('title', 'menu', 'submenu', 'type'));
+        return view('fazer-reserva', compact('title', 'menu', 'submenu', 'type', 'veiculos'));
+    }
+
+    public function fazerReservaStore(Request $request)
+    {
+        dd('hello');
     }
 
     public function panel()

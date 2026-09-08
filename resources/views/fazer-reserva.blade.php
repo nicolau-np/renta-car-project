@@ -29,8 +29,9 @@
     @endif
 
     <section class="section__container pt-30px pb-50px" id="reserva">
-        <form method="POST" action="{{ '' }}" id="formReserva">
+        <form method="POST" action="{{ '/fazer-reserva' }}" id="formReserva">
             @csrf
+            @method('POST')
 
             <div class="row gy-4" style="max-width: 1100px; margin-inline: auto;">
 
@@ -48,11 +49,9 @@
                                 <label class="form-label">Veículo</label>
                                 <select name="veiculo_id" id="veiculoSelect" class="form-control" required>
                                     <option value="" disabled selected>Seleccione um veículo</option>
-                                    @foreach ($veiculos ?? [] as $veiculo)
-                                        <option value="{{ $veiculo->id }}"
-                                            data-preco="{{ $veiculo->preco_dia ?? 0 }}"
-                                            {{ (old('veiculo_id', request('veiculo')) == $veiculo->id) ? 'selected' : '' }}>
-                                            {{ $veiculo->nome }} — {{ $veiculo->preco_dia ?? 0 }} Kzs/dia
+                                    @foreach ($veiculos as $veiculo)
+                                        <option value="{{ $veiculo->id }}" {{$veiculo->id==('veiculo_id')?'selected':null}}>
+                                            {{ $veiculo->marca ." | ". $veiculo->modelo}} — {{ $veiculo->preco_por_dia }} Kzs/dia
                                         </option>
                                     @endforeach
                                 </select>
@@ -69,18 +68,18 @@
                         <div class="row gy-3">
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Data de recolha</label>
-                                <input type="date" name="data_inicio" id="dataInicio" class="form-control"
-                                    value="{{ old('data_inicio') }}" required>
+                                <input type="date" name="data_recolha" id="dataInicio" class="form-control"
+                                    value="{{ old('data_recolha') }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Data de devolução</label>
-                                <input type="date" name="data_fim" id="dataFim" class="form-control"
-                                    value="{{ old('data_fim') }}" required>
+                                <input type="date" name="local_de_recolha" id="dataFim" class="form-control"
+                                    value="{{ old('local_de_recolha') }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Local de recolha</label>
-                                <input type="text" name="local_recolha" class="form-control"
-                                    placeholder="Ex: Aeroporto de Luanda" value="{{ old('local_recolha') }}" required>
+                                <input type="text" name="local_de_devolucao" class="form-control"
+                                    placeholder="Ex: Aeroporto de Luanda" value="{{ old('local_de_devolucao') }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Local de devolução</label>
@@ -93,7 +92,7 @@
                     {{-- 3. DADOS DO CONDUTOR --}}
                     <div class="card" style="padding: 1.75rem; margin-bottom: 1.5rem;">
                         <h4 class="card-title" style="margin-bottom: 1rem;">
-                            <i class="ri-user-line" style="color: var(--primary-color);"></i> 3. Dados do Condutor
+                            <i class="ri-user-line" style="color: var(--primary-color);"></i> 3. Dados do Cliente
                         </h4>
 
                         <div class="row gy-3">

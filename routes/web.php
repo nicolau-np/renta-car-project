@@ -43,6 +43,7 @@ Route::get('sobre', [HomeController::class, 'sobre']);
 Route::get('termos-e-condicoes', [HomeController::class, 'termosECondicoes']);
 Route::get('por-que-nos-escolher', [HomeController::class, 'porQueNosEscolher']);
 Route::get('fazer-reserva', [HomeController::class, 'fazerReserva']);
+Route::post('fazer-reserva', [HomeController::class, 'fazerReservaStore']);
 
 Route::prefix('panel')->group(function () {
     Route::get('/', [HomeController::class, 'panel']);

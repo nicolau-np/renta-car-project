@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nacionalidade')->default('Angolano');
             $table->string('telefone');
             $table->string('bi')->nullable();
+            $table->string('email')->nullable();
             $table->string('carta_de_conducao');
             $table->timestamps();
         });

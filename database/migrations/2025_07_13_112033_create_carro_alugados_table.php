@@ -16,9 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('carro_id');
             $table->unsignedBigInteger('cliente_id');
             $table->string('preco');
-            $table->date('data_de_entrega_da_chave');
-            $table->date('data_devolucao_da_chave');
-            $table->string('local_de_circulacao');
+            $table->date('data_de_recolha');
+            $table->date('data_de_devolucao');
+            $table->string('local_de_recolha');
+            $table->string('local_de_devolucao');
+            $table->json('extras');
+
             $table->timestamps();
 
 

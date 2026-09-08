@@ -14,9 +14,15 @@ class CarroAlugado extends Model
         'carro_id',
         'cliente_id',
         'preco',
-        'data_de_entrega_da_chave',
-        'data_devolucao_da_chave',
-        'local_de_circulacao',
+        'data_de_recolha',
+        'data_de_devolucao',
+        'local_de_recolha',
+        'local_de_devolucao',
+        'extras',
+    ];
+
+    protected $casts = [
+        'extras' => 'array',
     ];
 
     public function carro(): BelongsTo
