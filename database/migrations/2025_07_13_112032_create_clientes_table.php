@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('nacionalidade')->default('Angolano');
+            $table->string('nacionalidade')->nullable()->default('Angolano');
             $table->string('telefone');
             $table->string('bi')->nullable();
             $table->string('email')->nullable();
-            $table->string('carta_de_conducao');
+            $table->string('carta_de_conducao')->nullable();
             $table->timestamps();
         });
     }

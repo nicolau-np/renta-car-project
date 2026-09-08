@@ -78,13 +78,13 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Local de recolha</label>
-                                <input type="text" name="local_de_devolucao" class="form-control"
-                                    placeholder="Ex: Aeroporto de Luanda" value="{{ old('local_de_devolucao') }}" required>
+                                <input type="text" name="local_de_recolha" class="form-control"
+                                    placeholder="Ex: Aeroporto de Luanda" value="{{ old('local_de_recolha') }}" required>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Local de devolução</label>
-                                <input type="text" name="local_devolucao" class="form-control"
-                                    placeholder="Igual ao de recolha, se aplicável" value="{{ old('local_devolucao') }}">
+                                <input type="text" name="local_de_devolucao" class="form-control"
+                                    placeholder="Igual ao de recolha, se aplicável" value="{{ old('local_de_devolucao') }}">
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Número da carta de condução</label>
-                                <input type="text" name="carta_conducao" class="form-control" value="{{ old('carta_conducao') }}" required>
+                                <input type="text" name="carta_de_conducao" class="form-control" value="{{ old('carta_de_conducao') }}" required>
                             </div>
                         </div>
                     </div>
@@ -141,12 +141,7 @@
                                     Cadeira de bebé <span style="color: var(--text-light);">(+2.000 Kzs/dia)</span>
                                 </label>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
-                                    <input type="checkbox" name="extras[]" value="gps" class="extra-check" data-preco="1500">
-                                    GPS <span style="color: var(--text-light);">(+1.500 Kzs/dia)</span>
-                                </label>
-                            </div>
+                            
                         </div>
                     </div>
 
