@@ -12,7 +12,7 @@
     </section>
 
     {{-- MENSAGENS DE FEEDBACK --}}
-    @if (session('sucesso'))
+    @if (session('success'))
         <div class="section__container pt-30px pb-0">
             <div class="alert alert-success" style="max-width: 800px; margin-inline: auto; text-align: center;">
                 <i class="ri-checkbox-circle-line"></i> {{ session('sucesso') }}

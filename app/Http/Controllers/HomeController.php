@@ -8,6 +8,7 @@ use App\Models\Carro;
 use App\Models\CarroAlugado;
 use App\Models\Cliente;
 use App\Models\Pedido;
+use App\Models\Reboque;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -23,7 +24,8 @@ class HomeController extends Controller
         private Pedido $pedido,
         private UploadHelper $upload_helper,
         private CarroAlugado $carro_alugado,
-        private Cliente $cliente
+        private Cliente $cliente,
+        private Reboque $reboque
     ) {}
 
     public function index()
@@ -65,6 +67,30 @@ class HomeController extends Controller
         $type = "servico-de-reboque";
 
         return view('servico-de-reboque', compact('title', 'menu', 'submenu', 'type'));
+    }
+
+    public function servicoDeReboqueStore(Request $request)
+    {
+        $this->validate($request, [
+            'nome' => 'required|string',
+            'telefone' => 'required|string',
+            'local_da_viatura' => 'required|string',
+            'tipo_de_servico' => 'required|string',
+            'modelo_marca_da_viatura' => 'required|string',
+            'observacao' => 'nullable|string',
+        ], [], [
+            'nome' => 'Nome',
+            'telefone' => 'Nº de Telefone',
+            'local_da_viatura' => 'Local da Viatura',
+            'tipo_de_servico' => 'Tipo de Serviço',
+            'modelo_marca_da_viatura' => 'Modelo de Marca da Viatura',
+            'observacao' => 'Observação',
+        ]);
+
+
+        $response = $this->reboque->create($request->all());
+
+        return back()->with('success', 'Feito com sucesso');
     }
 
     public function modificarReserva()
@@ -172,7 +198,7 @@ class HomeController extends Controller
             $data['carro_alugado']['cliente_id'] = $response->id;
             $response_carro_alugado = $this->carro_alugado->create($data['carro_alugado']);
 
-            return redirect('/reports/recibo-de-reserva/'.$response_carro_alugado->id);
+            return redirect('/reports/recibo-de-reserva/' . $response_carro_alugado->id);
         });
     }
 

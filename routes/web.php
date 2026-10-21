@@ -38,6 +38,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('tarifas-e-reservas', [HomeController::class, 'tarifasEReservas']);
 Route::get('frota', [HomeController::class, 'frota']);
 Route::get('servico-de-reboque', [HomeController::class, 'servicoDeReboque']);
+Route::post('servico-de-reboque', [HomeController::class, 'servicoDeReboqueStore']);
 Route::get('modificar-reserva', [HomeController::class, 'modificarReserva']);
 Route::get('sobre', [HomeController::class, 'sobre']);
 Route::get('termos-e-condicoes', [HomeController::class, 'termosECondicoes']);

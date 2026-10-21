@@ -175,13 +175,13 @@
                 </a>
 
 
-                
+
                 <ul class="modern-nav-menu">
                     <li><a href="{{ url('/') }}" class="modern-nav-link">Página Inicial</a></li>
                     <li><a href="{{ url('/tarifas-e-reservas') }}" class="modern-nav-link">Tarifas e reservas</a></li>
                     <li><a href="{{ url('/frota') }}" class="modern-nav-link">Frota</a></li>
                     <li><a href="{{ url('/servico-de-reboque') }}" class="modern-nav-link">Serviço de reboque</a></li>
-                    <li><a href="{{ url('/modificar-reserva') }}" class="modern-nav-link">Modificar reserva</a></li>
+                    {{--<li><a href="{{ url('/modificar-reserva') }}" class="modern-nav-link">Modificar reserva</a></li>--}}
                     <li><a href="{{ url('/sobre') }}" class="modern-nav-link">Sobre</a></li>
                 </ul>
 
@@ -325,12 +325,12 @@
         <!-- Coluna 4: Mapa (Colocar AQUI dentro da footer__container) -->
     <div class="footer__col footer__map">
       <h4>Nossa Localização</h4>
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60867.22814881268!2d12.112832599999999!3d-15.196111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1b44c4b694b8e6eb%3A0x6e09e1e31d4715b0!2sMo%C3%A7%C3%A2medes%2C%20Angola!5e0!3m2!1wpt-PT!2s!4v1700000000000!5m2!1wpt-PT!2s" 
-        width="100%" 
-        height="180" 
-        style="border:0; border-radius: 8px;" 
-        allowfullscreen="" 
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60867.22814881268!2d12.112832599999999!3d-15.196111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1b44c4b694b8e6eb%3A0x6e09e1e31d4715b0!2sMo%C3%A7%C3%A2medes%2C%20Angola!5e0!3m2!1wpt-PT!2s!4v1700000000000!5m2!1wpt-PT!2s"
+        width="100%"
+        height="180"
+        style="border:0; border-radius: 8px;"
+        allowfullscreen=""
         loading="lazy">
       </iframe>
     </div>

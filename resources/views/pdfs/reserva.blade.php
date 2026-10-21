@@ -111,7 +111,7 @@
     <table>
         <tr>
             <th>Nome</th>
-            <td>{{ $cliente->name ?? 'Não informado' }}</td>
+            <td>{{ $cliente->nome ?? 'Não informado' }}</td>
         </tr>
         <tr>
             <th>Email</th>
