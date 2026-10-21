@@ -24,11 +24,17 @@ return [
             'dropdown' => null,
             'type' => 'clientes',
         ],[
-            'label' => 'Pedidos',
-            'url' => '/panel/pedidos',
+            'label' => 'Reservas Efectuadas',
+            'url' => '/panel/reservas-efectuadas',
             'icon' => null,
             'dropdown' => null,
-            'type' => 'pedidos',
+            'type' => 'reservas-efectuadas',
+        ],[
+            'label' => 'Pedidos de Reboque',
+            'url' => '/panel/pedidos-de-reboque',
+            'icon' => null,
+            'dropdown' => null,
+            'type' => 'pedidos-de-reboque',
         ],
 
     ],

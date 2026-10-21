@@ -56,6 +56,9 @@ Route::prefix('panel')->group(function () {
     Route::prefix('pedidos')->group(function () {
         Route::get('/', [PedidoController::class, 'index']);
     });
+
+    Route::get('pedidos-de-reboque', [PedidoController::class, 'pedidoDeReboque']);
+    Route::get('reservas-efectuadas', [PedidoController::class, 'reservasEfectuadas']);
 });
 
 Route::prefix('reports')->group(function(){
