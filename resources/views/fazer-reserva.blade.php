@@ -7,7 +7,7 @@
         <h2 class="section__header">Fazer Reserva</h2>
         <p class="section__description" style="max-width: 600px; margin-inline: auto;">
             Escolha o veículo, indique as datas e finalize a sua reserva em poucos minutos.
-            Confirmação imediata por e-mail e SMS.
+
         </p>
     </section>
 
@@ -47,7 +47,7 @@
                         <div class="row gy-2">
                             <div class="col-12">
                                 <label class="form-label">Veículo</label>
-                                <select name="veiculo_id" id="veiculoSelect" class="form-control" required>
+                                <select name="veiculo_id" id="veiculoSelect" class="form-control" >
                                     <option value="" disabled selected>Seleccione um veículo</option>
                                     @foreach ($veiculos as $veiculo)
                                         <option value="{{ $veiculo->id }}" {{$veiculo->id==('veiculo_id')?'selected':null}}>
@@ -68,18 +68,18 @@
                         <div class="row gy-3">
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Data de recolha</label>
-                                <input type="date" name="data_recolha" id="dataInicio" class="form-control"
-                                    value="{{ old('data_recolha') }}" required>
+                                <input type="date" name="data_de_recolha" id="dataInicio" class="form-control"
+                                    value="{{ old('data_de_recolha') }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Data de devolução</label>
-                                <input type="date" name="local_de_recolha" id="dataFim" class="form-control"
-                                    value="{{ old('local_de_recolha') }}" required>
+                                <input type="date" name="data_de_devolucao" id="dataFim" class="form-control"
+                                    value="{{ old('data_de_devolucao') }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Local de recolha</label>
                                 <input type="text" name="local_de_recolha" class="form-control"
-                                    placeholder="Ex: Aeroporto de Luanda" value="{{ old('local_de_recolha') }}" required>
+                                    placeholder="Ex: Aeroporto de Luanda" value="{{ old('local_de_recolha') }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Local de devolução</label>
@@ -98,26 +98,26 @@
                         <div class="row gy-3">
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Nome completo</label>
-                                <input type="text" name="nome" class="form-control" value="{{ old('nome') }}" required>
+                                <input type="text" name="nome" class="form-control" value="{{ old('nome') }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Telefone</label>
                                 <input type="tel" name="telefone" class="form-control"
-                                    placeholder="+244 9xx xxx xxx" value="{{ old('telefone') }}" required>
+                                    placeholder="+244 9xx xxx xxx" value="{{ old('telefone') }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">E-mail</label>
-                                <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                                <input type="email" name="email" class="form-control" value="{{ old('email') }}" >
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label">Número da carta de condução</label>
-                                <input type="text" name="carta_de_conducao" class="form-control" value="{{ old('carta_de_conducao') }}" required>
+                                <input type="text" name="carta_de_conducao" class="form-control" value="{{ old('carta_de_conducao') }}" >
                             </div>
                         </div>
                     </div>
 
                     {{-- 4. EXTRAS --}}
-                    <div class="card" style="padding: 1.75rem;">
+                    {{--<div class="card" style="padding: 1.75rem;">
                         <h4 class="card-title" style="margin-bottom: 1rem;">
                             <i class="ri-add-circle-line" style="color: var(--primary-color);"></i> 4. Extras (opcional)
                         </h4>
@@ -141,17 +141,17 @@
                                     Cadeira de bebé <span style="color: var(--text-light);">(+2.000 Kzs/dia)</span>
                                 </label>
                             </div>
-                            
+
                         </div>
-                    </div>
+                    </div>--}}
 
                 </div>
 
                 {{-- COLUNA DIREITA: RESUMO DA RESERVA --}}
                 <div class="col-12 col-lg-5">
                     <div class="card" style="padding: 1.75rem; position: sticky; top: 20px;">
-                        <h4 class="card-title" style="margin-bottom: 1rem;">
-                            <i class="ri-file-list-3-line" style="color: var(--primary-color);"></i> Resumo da Reserva
+                        {{--<h4 class="card-title" style="margin-bottom: 1rem;">
+                            <i class="ri-file-list-3-line" style="color: var(--primary-color);"></i>
                         </h4>
 
                         <div id="resumoVazio" style="text-align: center; padding: 1.5rem 0; color: var(--text-light);">
@@ -184,16 +184,16 @@
                             <p style="font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem;">
                                 Valor sujeito a confirmação final pela nossa equipa.
                             </p>
-                        </div>
+                        </div>--}}
 
                         <button type="submit" class="btn" style="width: 100%; justify-content: center; margin-top: 1.5rem;">
                             <i class="ri-checkbox-circle-line"></i> Confirmar Reserva
                         </button>
 
-                        <p style="font-size: 0.78rem; color: var(--text-light); text-align: center; margin-top: 0.75rem;">
+                        {{--<p style="font-size: 0.78rem; color: var(--text-light); text-align: center; margin-top: 0.75rem;">
                             Ao confirmar, aceita os nossos
                             <a href="{{ '' }}#" style="color: var(--primary-color);">Termos e Condições</a>.
-                        </p>
+                        </p>--}}
                     </div>
                 </div>
 
@@ -219,66 +219,5 @@
         </div>
     </section>
 
-    {{-- SCRIPT: Cálculo do resumo em tempo real --}}
-    <script>
-        const veiculoSelect = document.getElementById('veiculoSelect');
-        const dataInicio    = document.getElementById('dataInicio');
-        const dataFim       = document.getElementById('dataFim');
-        const extraChecks   = document.querySelectorAll('.extra-check');
-
-        function calcularResumo() {
-            const veiculoOpt = veiculoSelect.options[veiculoSelect.selectedIndex];
-            const precoDia   = veiculoOpt ? parseFloat(veiculoOpt.dataset.preco || 0) : 0;
-            const nomeVeiculo = veiculoOpt && veiculoOpt.value ? veiculoOpt.text.split(' — ')[0] : null;
-
-            const inicio = dataInicio.value ? new Date(dataInicio.value) : null;
-            const fim    = dataFim.value ? new Date(dataFim.value) : null;
-
-            let dias = 0;
-            if (inicio && fim && fim > inicio) {
-                dias = Math.ceil((fim - inicio) / (1000 * 60 * 60 * 24));
-            }
-
-            let precoExtrasDia = 0;
-            let extrasSelecionados = [];
-            extraChecks.forEach(chk => {
-                if (chk.checked) {
-                    precoExtrasDia += parseFloat(chk.dataset.preco || 0);
-                    extrasSelecionados.push(chk.value);
-                }
-            });
-
-            const resumoVazio    = document.getElementById('resumoVazio');
-            const resumoConteudo = document.getElementById('resumoConteudo');
-
-            if (!nomeVeiculo || dias === 0) {
-                resumoVazio.style.display = 'block';
-                resumoConteudo.style.display = 'none';
-                return;
-            }
-
-            resumoVazio.style.display = 'none';
-            resumoConteudo.style.display = 'block';
-
-            const totalVeiculo = precoDia * dias;
-            const totalExtras  = precoExtrasDia * dias;
-            const total        = totalVeiculo + totalExtras;
-
-            document.getElementById('resumoVeiculo').textContent   = nomeVeiculo;
-            document.getElementById('resumoDias').textContent      = dias + (dias === 1 ? ' dia' : ' dias');
-            document.getElementById('resumoPrecoDia').textContent  = precoDia.toLocaleString('pt-PT') + ' Kzs';
-            document.getElementById('resumoExtras').textContent    = extrasSelecionados.length
-                ? extrasSelecionados.length + ' seleccionado(s)'
-                : 'Nenhum';
-            document.getElementById('resumoTotal').textContent     = total.toLocaleString('pt-PT') + ' Kzs';
-        }
-
-        veiculoSelect.addEventListener('change', calcularResumo);
-        dataInicio.addEventListener('change', calcularResumo);
-        dataFim.addEventListener('change', calcularResumo);
-        extraChecks.forEach(chk => chk.addEventListener('change', calcularResumo));
-
-        calcularResumo();
-    </script>
 
 @endsection

@@ -10,7 +10,7 @@ class CarroAlugado extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'carro_id',
         'cliente_id',
         'preco',
@@ -18,6 +18,8 @@ class CarroAlugado extends Model
         'data_de_devolucao',
         'local_de_recolha',
         'local_de_devolucao',
+        'total_de_dias',
+        'valor_total',
         'extras',
     ];
 

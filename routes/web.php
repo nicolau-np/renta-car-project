@@ -57,6 +57,10 @@ Route::prefix('panel')->group(function () {
     });
 });
 
+Route::prefix('reports')->group(function(){
+Route::get('recibo-de-reserva/{carro_alugado_id}', [HomeController::class, 'reciboDeReserva']);
+});
+
 Route::get('/storage/{path}/{name}', function ($path, $name) {
     return Storage::download('public/' . $path . '/' . $name);
 });

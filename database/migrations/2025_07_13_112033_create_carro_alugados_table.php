@@ -20,7 +20,9 @@ return new class extends Migration
             $table->date('data_de_devolucao');
             $table->string('local_de_recolha');
             $table->string('local_de_devolucao');
-            $table->json('extras');
+            $table->string('total_de_dias');
+            $table->string('valor_total');
+            $table->json('extras')->nullable();
 
             $table->timestamps();
 

@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Helpers\MenuItemsHelper;
 use App\Helpers\UploadHelper;
 use App\Models\Carro;
+use App\Models\CarroAlugado;
+use App\Models\Cliente;
 use App\Models\Pedido;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -16,7 +21,9 @@ class HomeController extends Controller
         private MenuItemsHelper $menuItemsHelper,
         private Carro $carro,
         private Pedido $pedido,
-        private UploadHelper $upload_helper
+        private UploadHelper $upload_helper,
+        private CarroAlugado $carro_alugado,
+        private Cliente $cliente
     ) {}
 
     public function index()
@@ -113,7 +120,60 @@ class HomeController extends Controller
 
     public function fazerReservaStore(Request $request)
     {
-        dd('hello');
+        $this->validate($request, [
+            'veiculo_id' => 'required|integer|exists:carros,id',
+            'data_de_recolha' => 'required|date',
+            'local_de_recolha' => 'required|string',
+            'data_de_devolucao' => 'required|date|after:data_de_recolha',
+            'local_de_devolucao' => 'required|string',
+            'nome' => 'required|string',
+            'telefone' => 'required|integer',
+            'email' => 'required|email',
+            'carta_de_conducao' => 'required|string',
+        ], [], [
+            'veiculo_id' => 'Veículo',
+            'data_de_recolha' => 'Data de recolha',
+            'local_de_recolha' => 'Local de recolha',
+            'data_de_devolucao' => 'Data de devolução',
+            'local_de_devolucao' => 'Local de devolução',
+            'nome' => 'Nome',
+            'telefone' => 'Nº de Telefone',
+            'email' => 'E-mail',
+            'carta_de_conducao' => 'Nº da Carta de Condução',
+        ]);
+
+        $carro = $this->carro->findOrFail($request->veiculo_id);
+        $data_de_recolha = Carbon::parse($request->data_de_recolha);
+        $data_de_devolucao = Carbon::parse($request->data_de_devolucao);
+
+        $total_de_dias = $data_de_recolha->diffInDays($data_de_devolucao);
+
+        $valor_total = $total_de_dias * $carro->preco_por_dia;
+        $data['carro_alugado'] = [
+            'carro_id' => $request->veiculo_id,
+            'preco' => $carro->preco_por_dia,
+            'data_de_recolha' => $request->data_de_recolha,
+            'data_de_devolucao' => $request->data_de_devolucao,
+            'local_de_recolha' => $request->local_de_recolha,
+            'local_de_devolucao' => $request->local_de_devolucao,
+            'total_de_dias' => $total_de_dias,
+            'valor_total' => $valor_total,
+        ];
+
+        $data['cliente'] = [
+            'nome' => $request->nome,
+            'telefone' => $request->telefone,
+            'email' => $request->email,
+            'carta_de_conducao' => $request->carta_de_conducao,
+        ];
+
+        return DB::transaction(function () use ($data) {
+            $response = $this->cliente->create($data['cliente']);
+            $data['carro_alugado']['cliente_id'] = $response->id;
+            $response_carro_alugado = $this->carro_alugado->create($data['carro_alugado']);
+
+            return redirect('/reports/recibo-de-reserva/'.$response_carro_alugado->id);
+        });
     }
 
     public function panel()
@@ -151,5 +211,24 @@ class HomeController extends Controller
         $this->pedido->create($data);
 
         return back()->with('success', 'Feito com sucesso');
+    }
+
+    public function reciboDeReserva(string $carro_alugado_id)
+    {
+        $reserva = CarroAlugado::with(['cliente', 'carro'])
+            ->findOrFail($carro_alugado_id);
+
+        $cliente = $reserva->cliente;
+        $carro = $reserva->carro;
+
+        $pdf = Pdf::loadView('pdfs.reserva', [
+            'reserva' => $reserva,
+            'cliente' => $cliente,
+            'carro' => $carro,
+        ]);
+
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('reserva-' . $reserva->id . '.pdf');
     }
 }

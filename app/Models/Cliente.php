@@ -16,6 +16,7 @@ class Cliente extends Model
         'telefone',
         'bi',
         'carta_de_conducao',
+        'email',
     ];
 
     public function carroAlugado(): HasMany
